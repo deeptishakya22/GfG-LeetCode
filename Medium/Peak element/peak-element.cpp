@@ -14,22 +14,16 @@ class Solution
     public:
     int peakElement(int arr[], int n)
     {
-       // Your code here
-        int s=0, e=n-1;
-        int mid = s + (e-s)/2;
-        
-        while(s<e){ 
-        
-            if(arr[mid]<arr[mid+1]) {
-                s=mid+1;
-            }
-            else {
-                e=mid;
-            }
-            mid = s + (e-s)/2;
+        int left = 0, right = n - 1, mid;
+        while (left < right) {
+            mid = (left + right) / 2;
+            if (arr[mid] < arr[mid + 1])
+                left = mid + 1;
+            else
+                right = mid;
         }
-        return s;
-    }    
+        return left;
+    }
 };
 
 //{ Driver Code Starts.
