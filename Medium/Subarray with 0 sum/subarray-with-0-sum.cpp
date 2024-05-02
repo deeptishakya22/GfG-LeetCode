@@ -13,17 +13,17 @@ class Solution{
     //Function to check whether there is a subarray present with 0-sum or not.
     bool subArrayExists(int arr[], int n)
     {
-        unordered_set<int> sumSet;
-        int sum = 0;
-        for (int i = 0; i < n; i++) {
-            sum += arr[i];
-
-            if (sum == 0 || sumSet.find(sum) != sumSet.end())
+        int pre=0;
+        unordered_set<int> s;
+        for(int i=0; i<n; i++) {
+            pre += arr[i];
+            if(s.find(pre) != s.end())
                 return true;
- 
-            sumSet.insert(sum);
+            if(pre == 0) 
+                return true;
+            s.insert(pre);
         }
-    return false;
+        return false;
     }
 };
 
