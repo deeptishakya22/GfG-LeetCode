@@ -11,17 +11,18 @@ class Solution
     public:
     //Function to find all elements in array that appear more than n/k times.
     int countOccurence(int arr[], int n, int k) {
-        map<int,int> mp;
-        int minCnt = n/k;
-        for(int i = 0 ; i < n; ++i)
-            ++mp[arr[i]];
-        
-        int out = 0;
-        for(auto i: mp)
-            if(i.second > minCnt)
-                ++out;
-                
-        return out;
+        int frequency = n/k;
+        map<int, int>mp;
+        for(int i =0; i < n; i++)
+            mp[arr[i]]++;
+    
+        int count = 0;
+        for(auto x : mp)
+        {
+            if(x.second > frequency)
+                count++;
+        }
+        return count;
     }
 };
 
